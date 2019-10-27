@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+<title>Highcharts</title>
+   <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script> 
+   <script src="http://code.highcharts.com/modules/data.js"></script>     
+</head>
+<table id="datatable"
+width="500" 
+  height="100"
+  border=3 align="center"
+    bordercolor="#3333FF">
+<caption>天文信息</caption>
+        </tr>	
+                <tr>
+                	 <td align="center" valign="middle">名称</td>	 
+                 <td width="75" align="center" valign="middle">a</td>	
+                   <td align="center" valign="middle">b</td>	
+                    <td align="center" valign="middle">c</td>	
+                     <td align="center" valign="middle">d</td>	
+                      <td align="center" valign="middle">e</td>	
+  </tr>		
+        <tr>	
+           	 <td align="center" valign="middle" >数字</td>	
+            <td align="center" valign="middle">5</td>
+            <td align="center" valign="middle">30</td>
+            <td align="center" valign="middle">15</td>
+            <td align="center" valign="middle">30</td>
+            <td align="center" valign="middle">20</td>
+  
+</table>
+<body bgcolor="#E1C4C4" text="#000066">
+<div align="center">
+  
+  <font size="10"color="#CC0000">虚拟天文台</font><strong></strong>
+ <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+<script language="JavaScript">
+$(document).ready(function() { 
+   var data = {
+      table: 'datatable'
+   };
+   var chart = {
+      type: 'column'
+   };
+   var title = {
+      text: '天文信息'   
+   };      
+   var yAxis = {
+      allowDecimals: false,
+      title: {
+         text: 'Units'
+      }
+   };
+   var tooltip = {
+      formatter: function () {
+         return '<b>' + this.series.name + '</b><br/>' +
+            this.point.y + ' ' + this.point.name.toLowerCase();
+      }
+   };
+   var credits = {
+      enabled: false
+   };  
+      
+   var json = {};   
+   json.chart = chart; 
+   json.title = title; 
+   json.data = data;
+   json.yAxis = yAxis;
+   json.credits = credits;  
+   json.tooltip = tooltip;  
+   $('#container').highcharts(json);
+});
+
+</script>
+
+<div id="container2" style="width: 550px; height: 400px; margin: 0 auto"></div>
+<script language="JavaScript">
+
+$(document).ready(function() {  
+   var chart2 = {
+       plotBackgroundColor: null,
+       plotBorderWidth: null,
+       plotShadow: false
+   };
+   var title2 = {
+      text: '天文信息'   
+   };      
+   var tooltip2 = {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+   };
+   var plotOptions2 = {
+      pie: {
+         allowPointSelect: true,
+         cursor: 'pointer',
+         dataLabels: {
+            enabled: false           
+         },
+         showInLegend: true
+      }
+   };
+   var series2= [{
+      type: 'pie',
+      name: 'Browser share',
+      data: [
+         ['a',   5],
+         ['b',       30],
+         
+         ['c',    15],
+         ['d',     30],
+         ['e',   20]
+      ]
+   }];     
+      
+   var json2 = {};   
+   json2.chart= chart2; 
+   json2.title = title2;     
+   json2.tooltip = tooltip2;  
+   json2.series = series2;
+   json2.plotOptions = plotOptions2;
+   $('#container2').highcharts(json2);  
+});
+</script>
+</body>
+ </html>
